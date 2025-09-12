@@ -1,6 +1,6 @@
 const Players = () => {
   return (
-    <div className={'flex justify-center'}>
+    <div>
       Players
     </div>
   );

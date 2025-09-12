@@ -1,6 +1,6 @@
 const Matches = () => {
   return (
-    <div className={'flex justify-center'}>
+    <div>
       Matches
     </div>
   );
