@@ -36,18 +36,48 @@ const Tables = () => {
 
   return (
     <div className="overflow-x-auto mt-10 mb-20">
+      {/*<Table>*/}
+      {/*  <TableHead>*/}
+      {/*    <TableRow>*/}
+      {/*      <TableHeadCell/>*/}
+      {/*      <TableHeadCell/>*/}
+      {/*      <TableHeadCell>Club</TableHeadCell>*/}
+      {/*      <TableHeadCell className="font-medium dark:text-white">PTS</TableHeadCell>*/}
+      {/*      <TableHeadCell>W</TableHeadCell>*/}
+      {/*      <TableHeadCell>D</TableHeadCell>*/}
+      {/*      <TableHeadCell>L</TableHeadCell>*/}
+      {/*      <TableHeadCell>GD</TableHeadCell>*/}
+      {/*    </TableRow>*/}
+      {/*  </TableHead>*/}
+      {/*  <TableBody className="divide-y">*/}
+      {/*    {*/}
+      {/*      standings.map((standing: StandingsType) => {*/}
+      {/*        return (*/}
+      {/*          <TableRow className="bg-white dark:border-gray-700 dark:bg-gray-800">*/}
+      {/*            <TableCell>{standing.position}</TableCell>*/}
+      {/*            <TableCell><img src={standing.team.crest} alt={standing.team.tla} className={'w-7 h-7'}/></TableCell>*/}
+      {/*            <TableCell className="font-medium dark:text-white">{standing.team.shortName}</TableCell>*/}
+      {/*            <TableCell className="font-medium dark:text-white">{standing.points}</TableCell>*/}
+      {/*            <TableCell>{standing.won}</TableCell>*/}
+      {/*            <TableCell>{standing.draw}</TableCell>*/}
+      {/*            <TableCell>{standing.lost}</TableCell>*/}
+      {/*            <TableCell>{standing.goalDifference}</TableCell>*/}
+      {/*          </TableRow>*/}
+      {/*        );*/}
+      {/*      })*/}
+      {/*    }*/}
+      {/*  </TableBody>*/}
+      {/*</Table>*/}
+
       <Table>
         <TableHead>
           <TableRow>
-            <TableHeadCell/>
-            <TableHeadCell/>
             <TableHeadCell>Club</TableHeadCell>
-            <TableHeadCell>MP</TableHeadCell>
+            <TableHeadCell className="font-medium dark:text-white">PTS</TableHeadCell>
             <TableHeadCell>W</TableHeadCell>
             <TableHeadCell>D</TableHeadCell>
             <TableHeadCell>L</TableHeadCell>
             <TableHeadCell>GD</TableHeadCell>
-            <TableHeadCell className="font-medium dark:text-white">Pts</TableHeadCell>
           </TableRow>
         </TableHead>
         <TableBody className="divide-y">
@@ -55,15 +85,16 @@ const Tables = () => {
             standings.map((standing: StandingsType) => {
               return (
                 <TableRow className="bg-white dark:border-gray-700 dark:bg-gray-800">
-                  <TableCell>{standing.position}</TableCell>
-                  <TableCell><img src={standing.team.crest} alt={standing.team.tla} className={'w-7 h-7'}/></TableCell>
-                  <TableCell className="font-medium dark:text-white">{standing.team.shortName}</TableCell>
-                  <TableCell>{standing.playedGames}</TableCell>
+                  <TableCell className="flex content-center">
+                    <div className={'w-6 content-center'}>{standing.position}</div>
+                    <div className={'w-15 content-center'}><img src={standing.team.crest} alt={standing.team.tla} className={'w-7 h-7'}/></div>
+                    <div className="w-25 content-center font-medium dark:text-white">{standing.team.shortName}</div>
+                  </TableCell>
+                  <TableCell className="font-medium dark:text-white">{standing.points}</TableCell>
                   <TableCell>{standing.won}</TableCell>
                   <TableCell>{standing.draw}</TableCell>
                   <TableCell>{standing.lost}</TableCell>
                   <TableCell>{standing.goalDifference}</TableCell>
-                  <TableCell className="font-medium dark:text-white">{standing.points}</TableCell>
                 </TableRow>
               );
             })
