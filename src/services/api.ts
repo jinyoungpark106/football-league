@@ -1,4 +1,4 @@
-import {db} from "../../firebase.js";
+import {db} from "../../firebase";
 import {doc, getDoc} from "firebase/firestore";
 
 export const getMatches = async (id: string) => {

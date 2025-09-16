@@ -1,10 +1,10 @@
 import './App.css'
 import { Routes, Route } from "react-router-dom";
-import {Header} from "./components/Header.tsx";
-import Matches from "./components/Matches.tsx";
-import Tables from "./components/Tables.tsx";
-import Stats from "./components/Stats.tsx";
-import Players from "./components/Players.tsx";
+import {Header} from "./components/Header";
+import Matches from "./components/Matches";
+import Tables from "./components/Tables";
+import Stats from "./components/Stats";
+import Players from "./components/Players";
 
 function App() {
   return (
