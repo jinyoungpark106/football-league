@@ -1,7 +1,75 @@
+import {useEffect, useState} from "react";
+import {getStandings} from "../services/api";
+import { Table, TableBody, TableCell, TableHead, TableHeadCell, TableRow } from "flowbite-react";
+
+type StandingsType = {
+  draw: number,
+  form: null,
+  goalDifference: number,
+  goalsAgainst: number,
+  goalsFor: number,
+  lost: number,
+  playedGames: number,
+  points: number,
+  position: number,
+  won: number,
+  team: {
+    crest: string,
+    id: number,
+    name: string,
+    shortName: string,
+    tla: string,
+  },
+};
+
 const Tables = () => {
+  const [standings, setStandings] = useState([]);
+
+  useEffect(() => {
+    getStandings().then((res) => {
+      if (res) {
+        console.log(res.standings[0].table);
+        setStandings(res.standings[0].table);
+      }
+    });
+  }, []);
+
   return (
-    <div>
-      Table
+    <div className="overflow-x-auto mt-10 mb-20">
+      <Table>
+        <TableHead>
+          <TableRow>
+            <TableHeadCell/>
+            <TableHeadCell/>
+            <TableHeadCell>Club</TableHeadCell>
+            <TableHeadCell>MP</TableHeadCell>
+            <TableHeadCell>W</TableHeadCell>
+            <TableHeadCell>D</TableHeadCell>
+            <TableHeadCell>L</TableHeadCell>
+            <TableHeadCell>GD</TableHeadCell>
+            <TableHeadCell className="font-medium dark:text-white">Pts</TableHeadCell>
+          </TableRow>
+        </TableHead>
+        <TableBody className="divide-y">
+          {
+            standings.map((standing: StandingsType) => {
+              return (
+                <TableRow className="bg-white dark:border-gray-700 dark:bg-gray-800">
+                  <TableCell>{standing.position}</TableCell>
+                  <TableCell><img src={standing.team.crest} alt={standing.team.tla} className={'w-7 h-7'}/></TableCell>
+                  <TableCell className="font-medium dark:text-white">{standing.team.shortName}</TableCell>
+                  <TableCell>{standing.playedGames}</TableCell>
+                  <TableCell>{standing.won}</TableCell>
+                  <TableCell>{standing.draw}</TableCell>
+                  <TableCell>{standing.lost}</TableCell>
+                  <TableCell>{standing.goalDifference}</TableCell>
+                  <TableCell className="font-medium dark:text-white">{standing.points}</TableCell>
+                </TableRow>
+              );
+            })
+          }
+        </TableBody>
+      </Table>
     </div>
   );
 };
