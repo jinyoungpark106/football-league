@@ -23,52 +23,21 @@ type StandingsType = {
 };
 
 const Tables = () => {
-  const [standings, setStandings] = useState([]);
+  const [standings, setStandings] = useState<Array<StandingsType>>([]);
 
   useEffect(() => {
-    getStandings().then((res) => {
-      if (res) {
-        console.log(res.standings[0].table);
-        setStandings(res.standings[0].table);
+    getStandings().then((data) => {
+      if (data && data.standings && data.standings.length > 0) {
+        setStandings(data.standings[0].table);
+      } else {
+        console.log("API KEY:", import.meta.env.VITE_FOOTBALL_API_KEY);
+        console.warn("standings No data:", data);
       }
     });
   }, []);
 
   return (
     <div className="overflow-x-auto mt-10 mb-20">
-      {/*<Table>*/}
-      {/*  <TableHead>*/}
-      {/*    <TableRow>*/}
-      {/*      <TableHeadCell/>*/}
-      {/*      <TableHeadCell/>*/}
-      {/*      <TableHeadCell>Club</TableHeadCell>*/}
-      {/*      <TableHeadCell className="font-medium dark:text-white">PTS</TableHeadCell>*/}
-      {/*      <TableHeadCell>W</TableHeadCell>*/}
-      {/*      <TableHeadCell>D</TableHeadCell>*/}
-      {/*      <TableHeadCell>L</TableHeadCell>*/}
-      {/*      <TableHeadCell>GD</TableHeadCell>*/}
-      {/*    </TableRow>*/}
-      {/*  </TableHead>*/}
-      {/*  <TableBody className="divide-y">*/}
-      {/*    {*/}
-      {/*      standings.map((standing: StandingsType) => {*/}
-      {/*        return (*/}
-      {/*          <TableRow className="bg-white dark:border-gray-700 dark:bg-gray-800">*/}
-      {/*            <TableCell>{standing.position}</TableCell>*/}
-      {/*            <TableCell><img src={standing.team.crest} alt={standing.team.tla} className={'w-7 h-7'}/></TableCell>*/}
-      {/*            <TableCell className="font-medium dark:text-white">{standing.team.shortName}</TableCell>*/}
-      {/*            <TableCell className="font-medium dark:text-white">{standing.points}</TableCell>*/}
-      {/*            <TableCell>{standing.won}</TableCell>*/}
-      {/*            <TableCell>{standing.draw}</TableCell>*/}
-      {/*            <TableCell>{standing.lost}</TableCell>*/}
-      {/*            <TableCell>{standing.goalDifference}</TableCell>*/}
-      {/*          </TableRow>*/}
-      {/*        );*/}
-      {/*      })*/}
-      {/*    }*/}
-      {/*  </TableBody>*/}
-      {/*</Table>*/}
-
       <Table>
         <TableHead>
           <TableRow>
@@ -82,7 +51,7 @@ const Tables = () => {
         </TableHead>
         <TableBody className="divide-y">
           {
-            standings.map((standing: StandingsType) => {
+            standings?.map((standing: StandingsType) => {
               return (
                 <TableRow className="bg-white dark:border-gray-700 dark:bg-gray-800">
                   <TableCell className="flex content-center">

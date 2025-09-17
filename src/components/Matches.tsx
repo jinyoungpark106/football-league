@@ -16,7 +16,7 @@ type MatchType = {
 }
 
 const Matches = () => {
-  const [matches, setMatches] = useState(Array<MatchType> || []);
+  const [matches, setMatches] = useState<Array<MatchType>>([]);
   const [selectedTeam, setSelectedTeam] = useState('liverpool');
 
   useEffect(() => {
