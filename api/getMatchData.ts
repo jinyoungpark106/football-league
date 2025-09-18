@@ -12,7 +12,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     return;
   }
 
-  const docRef = doc(db, "premier-league", "2025-2026", "team", teamId as string);
+  const docRef = doc(db, "premier-league", "2025-2026", "team", "liverpool");
   const docSnap = await getDoc(docRef);
 
   if (docSnap.exists()) {
