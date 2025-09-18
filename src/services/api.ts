@@ -10,7 +10,6 @@ export const api = axios.create({
 });
 
 export const getStandings = async () => {
-  console.log("API KEY:", import.meta.env.VITE_FOOTBALL_API_KEY);
   try {
     const res = await api.get("/PL/standings"); // GET /standings
     console.log("GET standings:", res.data);
