@@ -20,16 +20,10 @@ const Matches = () => {
   const [selectedTeam, setSelectedTeam] = useState('liverpool');
 
   useEffect(() => {
-    const getData = async () => {
-      try {
-        const res = await fetch("https://football-league-beryl.vercel.app/api/getMatchData?teamId=liverpool");
-        const data = await res.json();
-        console.log("api data:", data);
-      } catch (err) {
-        console.error("fetch error:", err);
-      }
-    };
-    getData();
+    fetch("https://football-league-beryl.vercel.app/api/getMatchData?teamId=liverpool")
+      .then(res => res.json())
+      .then(data => console.log(data))
+      .catch(err => console.error(err));
   }, []);
 
   useEffect(() => {
