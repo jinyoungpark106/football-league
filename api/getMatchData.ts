@@ -5,6 +5,8 @@ import {db} from "../firebase";
 export default async function handler(req: VercelRequest, res: VercelResponse) {
   const { teamId } = req.query;
 
+  console.log('teamId: ', teamId);
+
   if (!teamId) {
     res.status(400).json({ error: "teamId required" });
     return;
